@@ -74,19 +74,21 @@ bot.hears(["name?", "name", "/name"], (message, responser) => {
 ```js
 "use strict";
 
-const Platform = require("nasim-bot");
+const Platform = require("../../index");
+
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
+const FileMessage = Platform.FileMessage;
+const File = Platform.File;
 const BotStatus = Platform.BotStatus;
 const User = Platform.User;
 const Conversation = Platform.Conversation;
 
-let bot = new NasimBot("Your Token");
+let bot = new NasimBot("Bot Token");
 
 let conv = new Conversation();
 
-let tracer = conv.startsWith(["lets talk"]);
-tracer.then((message, session, responser) => {
+conv.startsWith(["lets talk", "talk"]).then((message, session, responser) => {
     //STATE 0
     //The first state definitely matches with the "starts with" sensitive. In this case: "lets talk"
     responser.reply("OK. Whats your name?");
@@ -102,6 +104,11 @@ tracer.then((message, session, responser) => {
         responser.reply("What a long name! Give me a shorter name! :|");
         // Don't call session.next() to remain in the current state.
     }
+});
+
+// Within a conversation (when it's active and in some state other than first state) the user can finish it by sending a message. In this case: /end, /stop, or /by
+conv.cancelsWith(["/end", "/stop", "/bye"], (message, session, responser) => {
+    responser.reply("OK. bye!");
 });
 
 bot.setConversation(conv);
