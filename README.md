@@ -56,13 +56,17 @@ Use your ```bot``` methods to ```hear``` for a message, ```conversation``` or ..
 ```js
 "use strict";
 
-const Platform = require("nasim-bot");
+const Platform = require("../../index");
+
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
 
-let bot = new NasimBot("Your Token");
+let bot = new NasimBot("Bot Token");
 
-bot.hears(['whats your name', 'name', 'name?'], (responser, message) => {
+bot.hears(["name?", "name", "/name"], (message, responser) => {
+    if (message instanceof TextMessage)
+        console.log(message.text);
+
     responser.reply("My name is samplebot!");
 });
 ```
