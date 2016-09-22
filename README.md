@@ -118,5 +118,3 @@ BotStatus.getOnConnect().then(() => {
     bot.send(msg);
 });
 ```
-
-## NasimBot methods
