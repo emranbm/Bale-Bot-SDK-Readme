@@ -99,4 +99,24 @@ tracer.then((message, session, responser) => {
 
 bot.setConversation(conv);
 ```
+### Send sample
+```js
+"use strict";
+
+const Platform = require("nasim-bot");
+const NasimBot = Platform.NasimBot;
+const TextMessage = Platform.TextMessage;
+const BotStatus = Platform.BotStatus;
+const User = Platform.User;
+const Conversation = Platform.Conversation;
+
+let bot = new NasimBot("Your Token");
+
+BotStatus.getOnConnect().then(() => {
+    console.log("connected to the server.");
+    let msg = new TextMessage("Hi, I'm connected :)", new User(123, "321"));
+    bot.send(msg);
+});
+```
+
 ## NasimBot methods
