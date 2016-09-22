@@ -77,10 +77,10 @@ let bot = new NasimBot("Your Token");
 
 let conv = new Conversation();
 
-let tracer = conv.startsWith("Lets talk");
+let tracer = conv.startsWith("lets talk");
 tracer.then((message, session, responser) => {
     //STATE 0
-    //The first state definitely matches with the "starts with" sensitive. In this case: "Let's talk"
+    //The first state definitely matches with the "starts with" sensitive. In this case: "lets talk"
     responser.reply("OK. Whats your name?");
     //Go to the next state
     session.next();
