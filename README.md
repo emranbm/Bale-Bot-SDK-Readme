@@ -74,7 +74,7 @@ In this example, ```responser.reply("My name is samplebot!")``` is same as:
 ```js
 bot.send(new TextMessage("My name is samplebot!", message.user));
 ```
-In other words, responser.reply is a helper method that automatically sends the message to the sender.
+In other words, responser.reply is a helper method that automatically sends the message to the sender. See [Send sample](#send-sample).
 ### Conversation sample
 ```js
 "use strict";
@@ -114,21 +114,40 @@ conv.cancelsWith(["/end", "/stop", "/bye"], (message, session, responser) => {
 bot.setConversation(conv);
 ```
 ### Send sample
+It seems that this code should work. Bot it doesn't work!
 ```js
 "use strict";
 
-const Platform = require("nasim-bot");
+const Platform = require("../../index");
+
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
 const BotStatus = Platform.BotStatus;
 const User = Platform.User;
-const Conversation = Platform.Conversation;
 
 let bot = new NasimBot("Your Token");
 
-BotStatus.getOnConnect().then(() => {
+let msg = new TextMessage("Hi, I'm connected :)", new User(123, "321"));
+bot.send(msg); // Don't do this!
+```
+This is wrong, because in this situation the bot is not connected to the server yet.  
+Instead you should try to send, in the ```onConnect``` event.  
+For that, use the ```BotStatus``` class as follows.
+```js
+"use strict";
+
+const Platform = require("../../index");
+
+const NasimBot = Platform.NasimBot;
+const TextMessage = Platform.TextMessage;
+const BotStatus = Platform.BotStatus;
+const User = Platform.User;
+
+let bot = new NasimBot("Your Token");
+
+BotStatus.onConnect().then(() => {
     console.log("connected to the server.");
     let msg = new TextMessage("Hi, I'm connected :)", new User(123, "321"));
-    bot.send(msg);
+    bot.send(msg); // This is correct.
 });
 ```
