@@ -47,7 +47,6 @@ let bot = new NasimBot("Your Token");
 ```
 ### Next
 Use your ```bot``` methods to ```hear``` for a message, ```conversation``` or ...  
-See [NasimBot methods](#nasimbot-methods)
 ## Samples
 ### Hears sample
 ```js
