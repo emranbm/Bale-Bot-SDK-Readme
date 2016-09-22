@@ -82,11 +82,6 @@ In other words, responser.reply is a helper method that automatically sends the 
 const Platform = require("../../index");
 
 const NasimBot = Platform.NasimBot;
-const TextMessage = Platform.TextMessage;
-const FileMessage = Platform.FileMessage;
-const File = Platform.File;
-const BotStatus = Platform.BotStatus;
-const User = Platform.User;
 const Conversation = Platform.Conversation;
 
 let bot = new NasimBot("Bot Token");
