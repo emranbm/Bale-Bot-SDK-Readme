@@ -49,13 +49,23 @@ let bot = new NasimBot("Your Token");
 Use your ```bot``` methods to ```hear``` for a message, ```conversation``` or ...  
 See [NasimBot methods](#nasimbot-methods)
 ## Samples
-```javascript
-var nasimbotplatform = require("nasim-bot"); 
-var TextMessage = nasimbotplatform.TextMessage;
-var NasimBot = nasimbotplatform.NasimBot;
-var myBot = new NasimBot("YOUR_TOKEN");
-myBot.hears(['hi'], function (res) {
-    res.reply(new TextMessage("Hello!")); 
+### Hears sample
+```js
+"use strict";
+
+const Platform = require("nasim-bot");
+const NasimBot = Platform.NasimBot;
+const TextMessage = Platform.TextMessage;
+const BotStatus = Platform.BotStatus;
+const User = Platform.User;
+
+const Conversation = Platform.Conversation;
+
+let bot = new NasimBot("Your Token");
+
+bot.hears(['ok', 'you connected'], (responser) => {
+    responser.reply("yes I said I'm connected!");
 });
 ```
+### Conversation sample 
 ## NasimBot methods
