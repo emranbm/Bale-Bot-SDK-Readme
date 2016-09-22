@@ -70,6 +70,11 @@ bot.hears(["name?", "name", "/name"], (message, responser) => {
     responser.reply("My name is samplebot!");
 });
 ```
+In this example, ```responser.reply("My name is samplebot!")``` is same as:
+```js
+bot.send(new TextMessage("My name is samplebot!", message.user));
+```
+In other words, responser.reply is a helper method that automatically sends the message to the sender.
 ### Conversation sample
 ```js
 "use strict";
