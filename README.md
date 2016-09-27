@@ -25,8 +25,6 @@ Enjoy the provided classes. Here you are:
 ```javascript
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
-const FileMessage = Platform.FileMessage;
-const File = Platform.File;
 const BotStatus = Platform.BotStatus;
 const User = Platform.User;
 const Conversation = Platform.Conversation;
@@ -41,8 +39,6 @@ const Platform = require("nasim-bot");
 
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
-const FileMessage = Platform.FileMessage;
-const File = Platform.File;
 const BotStatus = Platform.BotStatus;
 const User = Platform.User;
 const Conversation = Platform.Conversation;
@@ -56,39 +52,33 @@ Use your ```bot``` methods to ```hear``` for a message, ```conversation``` or ..
 ```js
 "use strict";
 
-const Platform = require("../../index");
-
+const Platform = require("nasim-bot");
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
 
-let bot = new NasimBot("Bot Token");
+let bot = new NasimBot("Your Token");
 
-bot.hears(["name?", "name", "/name"], (message, responser) => {
-    if (message instanceof TextMessage)
-        console.log(message.text);
-
+bot.hears(['whats your name', 'name', 'name?'], (responser, message) => {
     responser.reply("My name is samplebot!");
 });
 ```
-In this example, ```responser.reply("My name is samplebot!")``` is same as:
-```js
-bot.send(new TextMessage("My name is samplebot!", message.user));
-```
-In other words, responser.reply is a helper method that automatically sends the message to the sender. See [Send sample](#send-sample).
 ### Conversation sample
 ```js
 "use strict";
 
-const Platform = require("../../index");
-
+const Platform = require("nasim-bot");
 const NasimBot = Platform.NasimBot;
+const TextMessage = Platform.TextMessage;
+const BotStatus = Platform.BotStatus;
+const User = Platform.User;
 const Conversation = Platform.Conversation;
 
-let bot = new NasimBot("Bot Token");
+let bot = new NasimBot("Your Token");
 
 let conv = new Conversation();
 
-conv.startsWith(["lets talk", "talk"]).then((message, session, responser) => {
+let tracer = conv.startsWith(["lets talk"]);
+tracer.then((message, session, responser) => {
     //STATE 0
     //The first state definitely matches with the "starts with" sensitive. In this case: "lets talk"
     responser.reply("OK. Whats your name?");
@@ -106,48 +96,19 @@ conv.startsWith(["lets talk", "talk"]).then((message, session, responser) => {
     }
 });
 
-// Within a conversation (when it's active and in some state other than first state) the user can finish it by sending a message. In this case: /end, /stop, or /by
-conv.cancelsWith(["/end", "/stop", "/bye"], (message, session, responser) => {
-    responser.reply("OK. bye!");
-});
-
 bot.setConversation(conv);
 ```
 ### Send sample
-It seems that this code should work. Bot it doesn't work!
 ```js
 "use strict";
 
-const Platform = require("../../index");
-
+const Platform = require("nasim-bot");
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
-const BotStatus = Platform.BotStatus;
 const User = Platform.User;
+const Conversation = Platform.Conversation;
 
 let bot = new NasimBot("Your Token");
-
-let msg = new TextMessage("Hi, I'm connected :)", new User(123, "321"));
-bot.send(msg); // Don't do this!
-```
-This is wrong, because in this situation the bot is not connected to the server yet.  
-Instead you should try to send, in the ```onConnect``` event.  
-For that, use the ```BotStatus``` class as follows.
-```js
-"use strict";
-
-const Platform = require("../../index");
-
-const NasimBot = Platform.NasimBot;
-const TextMessage = Platform.TextMessage;
-const BotStatus = Platform.BotStatus;
-const User = Platform.User;
-
-let bot = new NasimBot("Your Token");
-
-BotStatus.onConnect().then(() => {
-    console.log("connected to the server.");
-    let msg = new TextMessage("Hi, I'm connected :)", new User(123, "321"));
-    bot.send(msg); // This is correct.
-});
+let msg = new TextMessage("Hi, I'm connected :)", new User(123 /*user id*/, "321" /*user access hash*/));
+bot.send(msg);
 ```
