@@ -115,6 +115,7 @@ tracer.then((message, session, responser) => {
 bot.setConversation(conv); // Step 4
 ```
 ### Send sample
+You can send a message to a user initially. See the code example below:
 ```js
 "use strict";
 
@@ -128,8 +129,10 @@ let bot = new NasimBot("Your Token");
 let msg = new TextMessage("Hi, I'm connected :)", new User(123 /*user id*/, "321" /*user access hash*/));
 bot.send(msg);
 ```
+In this case, you need to have the user (or his ```id``` and ```accessHash```) to contact him. See the [User](#user) section for more details.
 ## API classes and models
 ### Sensitive
 ### Message
 ### Responder
 ### Conversation
+### User
