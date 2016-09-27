@@ -91,9 +91,9 @@ const Conversation = Platform.Conversation;
 
 let bot = new NasimBot("Your Token");
 
-let conv = new Conversation();
+let conv = new Conversation(); // Step 1
 
-let tracer = conv.startsWith(["lets talk"]);
+let tracer = conv.startsWith(["lets talk"]); // Step 2
 tracer.then((message, session, responser) => {
     //STATE 0
     //The first state definitely matches with the "starts with" sensitive. In this case: "lets talk"
@@ -110,9 +110,9 @@ tracer.then((message, session, responser) => {
         responser.reply("What a long name! Give me a shorter name! :|");
         // Don't call session.next() to remain in the current state.
     }
-});
+}); // Step 3
 
-bot.setConversation(conv);
+bot.setConversation(conv); // Step 4
 ```
 ### Send sample
 ```js
