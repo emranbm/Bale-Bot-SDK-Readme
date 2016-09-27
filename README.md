@@ -55,6 +55,9 @@ Discover more and more from [samples](#samples).
 ## Samples
 ### Hears sample
 You can hear for a message with a particular content and respond to it.
+The ```hear``` method takes two arguments:
+* A string array of expected texts in receiving messages to match. (Or alternatively a [Sensitive](#sensitive)
+* g
 ```js
 "use strict";
 
@@ -118,3 +121,5 @@ let bot = new NasimBot("Your Token");
 let msg = new TextMessage("Hi, I'm connected :)", new User(123 /*user id*/, "321" /*user access hash*/));
 bot.send(msg);
 ```
+## API classes and models
+### Sensitive
