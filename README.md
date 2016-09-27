@@ -54,6 +54,7 @@ Now your code environment is ready. You can ```hear``` for an individual message
 Discover more and more from [samples](#samples).
 ## Samples
 ### Hears sample
+You can hear for a message with a particular content and respond to it.
 ```js
 "use strict";
 
