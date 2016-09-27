@@ -54,7 +54,7 @@ Now your code environment is ready. You can ```hear``` for an individual message
 Discover more and more from [samples](#samples).
 ## Samples
 ### Hears sample
-You can hear for a message with a particular content and respond to it.
+You can hear for a message with a particular content and respond to it.  
 The ```hear``` method takes two arguments:
 * A string array of expected texts in receiving messages to match. (Or alternatively a [Sensitive](#sensitive) object)
 * A callback function in type of ```(message, responder) => {}``` that takes two arguments:
