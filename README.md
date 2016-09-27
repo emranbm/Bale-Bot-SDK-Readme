@@ -35,12 +35,14 @@ const Conversation = Platform.Conversation;
 ```javascript
 let bot = new NasimBot("Your Token");
 ```
-Now your index.js should look like this:
+Now your index.js should look something like this:
 ```javascript
 const Platform = require("nasim-bot");
 
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
+const FileMessage = Platform.FileMessage;
+const File = Platform.File;
 const BotStatus = Platform.BotStatus;
 const User = Platform.User;
 const Conversation = Platform.Conversation;
