@@ -50,8 +50,8 @@ const Conversation = Platform.Conversation;
 let bot = new NasimBot("Your Token");
 ```
 ### Next
-Use your ```bot``` methods to ```hear``` for a message, ```conversation``` or ...  
-See [Samples](#samples) in the next section.
+Now your code environment is ready. You can ```hear``` for an individual message. Make ```conversation```s and talk to your users.  
+Discover more and more from [samples](#samples).
 ## Samples
 ### Hears sample
 ```js
