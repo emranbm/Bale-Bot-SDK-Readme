@@ -56,8 +56,10 @@ Discover more and more from [samples](#samples).
 ### Hears sample
 You can hear for a message with a particular content and respond to it.
 The ```hear``` method takes two arguments:
-* A string array of expected texts in receiving messages to match. (Or alternatively a [Sensitive](#sensitive)
-* g
+* A string array of expected texts in receiving messages to match. (Or alternatively a [Sensitive](#sensitive) object)
+* A callback function in type of ```(message, responder) => {}``` that takes two arguments:
+    * **message**: The matched received [Message][#message] object.
+    * **responder**: See [Responder](#responder).
 ```js
 "use strict";
 
@@ -123,3 +125,5 @@ bot.send(msg);
 ```
 ## API classes and models
 ### Sensitive
+### Message
+### Responder
