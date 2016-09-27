@@ -63,7 +63,7 @@ const TextMessage = Platform.TextMessage;
 
 let bot = new NasimBot("Your Token");
 
-bot.hears(['whats your name', 'name', 'name?'], (responser, message) => {
+bot.hears(['whats your name', 'name', 'name?'], (message, responser) => {
     responser.reply("My name is samplebot!");
 });
 ```
