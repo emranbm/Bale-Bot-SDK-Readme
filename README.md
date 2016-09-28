@@ -77,7 +77,7 @@ bot.hears(['whats your name', 'name', 'name?'], (message, responser) => {
 Not all activities are limited to just ```hear```ing for a message and respond to it; As sometimes there is a need to make a __statefull__ conversation. Using this platform, you can make conversations with users as follows:
    1. Create a [Conversation](#conversation) object.  
    1. Determine what makes the conversation to trigger and get started.  
-   1. Determine what states the conversation would take, and the behavior of each state.  
+   1. Determine what states the conversation would take, and the [behavior of each state](#behavior-of-each-state).  
    1. Set the created conversation to your ```bot```.
 ```js
 "use strict";
@@ -114,6 +114,9 @@ tracer.then((message, session, responser) => {
 
 bot.setConversation(conv); // Step 4
 ```
+#####Behavior of each state:
+
+
 ### Send sample
 You can send a message to a user initially. See the code example below:
 ```js
