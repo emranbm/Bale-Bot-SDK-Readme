@@ -69,8 +69,8 @@ const TextMessage = Platform.TextMessage;
 
 let bot = new NasimBot("Your Token");
 
-bot.hears(['whats your name', 'name', 'name?'], (message, responser) => {
-    responser.reply("My name is samplebot!");
+bot.hears(['whats your name', 'name', 'name?'], (message, responder) => {
+    responder.reply("My name is samplebot!");
 });
 ```
 ### Conversation sample
@@ -94,20 +94,20 @@ let bot = new NasimBot("Your Token");
 let conv = new Conversation(); // Step 1
 
 let tracer = conv.startsWith(["lets talk"]); // Step 2
-tracer.then((message, session, responser) => {
+tracer.then((message, session, responder) => {
     //STATE 0
     //The first state definitely matches with the "starts with" sensitive. In this case: "lets talk"
-    responser.reply("OK. Whats your name?");
+    responder.reply("OK. Whats your name?");
     //Go to the next state
     session.next();
-}).then((message, session, responser) => {
+}).then((message, session, responder) => {
     //STATE 1
     if (message.text.length < 7) {
-        responser.reply("Nice name. I like " + message.text);
+        responder.reply("Nice name. I like " + message.text);
         //Ok. go to the next state...
         session.next();
     } else {
-        responser.reply("What a long name! Give me a shorter name! :|");
+        responder.reply("What a long name! Give me a shorter name! :|");
         // Don't call session.next() to remain in the current state.
     }
 }); // Step 3
@@ -115,7 +115,14 @@ tracer.then((message, session, responser) => {
 bot.setConversation(conv); // Step 4
 ```
 #####Behavior of each state:
-
+In each state, the user sent ```message```, the ```session``` object, and the ```responder``` object are given as the input.  
+* **message**: The message that the user has sent in such state.
+* **session**: The object to handle state-based operations like:
+   * next(): Go to the next state. (==> next message will be catched by the next state)
+   * reset(): Reset the state of the conversation. (==> like once the conversation is not **triggered** yet)
+   * putToSessionMemory: Put a custom key-value pair to the session memory to use in next states.
+   * getFromSessionMemomry: Get the value by its key.
+* **responder**: See [Responder](#responder)
 
 ### Send sample
 You can send a message to a user initially. See the code example below:
