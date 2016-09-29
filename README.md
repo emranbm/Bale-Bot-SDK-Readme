@@ -181,7 +181,7 @@ class PhotoMessageSensitive implements Sensitive {
 ```
 And now we can hear for photo messages like this:
 ```js
-bot.hears(new PhotoSensitive(), (message,responder) => {
+bot.hears(new PhotoMessageSensitive(), (message,responder) => {
    responder.reply("thank you for sharing pics with me!");
 });
 ```
