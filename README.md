@@ -186,6 +186,12 @@ bot.hears(new PhotoMessageSensitive(), (message,responder) => {
 });
 ```
 ### Message
+There are different messages like:
+* TextMessage
+* FileMessage
+   * PhotoMessage
+   * AudioMessage
+   * VideoMessage
 ### Responder
 ### Conversation
 ### User
