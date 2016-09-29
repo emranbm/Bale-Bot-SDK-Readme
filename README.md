@@ -193,7 +193,7 @@ There are different messages like:
    * AudioMessage
    * VideoMessage
 
-##### Usage
+#### Usage
 Feel free to instantiate and send any type of [Message](#message). Here are some examples:
 ```js
 let receiver = new User(123 /*user id*/, "321" /*user access hash*/);
