@@ -58,7 +58,7 @@ You can hear for a message with a particular content and respond to it.
 The ```hears``` method takes two arguments:
 * A string array of expected texts in receiving messages to match. (Or alternatively a [Sensitive](#sensitive) object)
 * A callback function in type of ```(message, responder) => {}``` that takes two arguments:
-    * **message**: The matched received [Message][#message] object.
+    * **message**: The matched received [Message](#message) object.
     * **responder**: See [Responder](#responder).
 ```js
 "use strict";
