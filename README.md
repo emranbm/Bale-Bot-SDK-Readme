@@ -158,7 +158,7 @@ bot.hears(["hello", "Hi"], (message,responder) => {
 });
 
 bot.setDefaultCallback((message,responder) => {
-    //The user said something new! :)
+    //The user said something unexpected!
 });
 ```
 ## API classes and models
