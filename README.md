@@ -141,6 +141,26 @@ bot.send(msg);
 ```
 In this case, you need to have the user (or his ```id``` and ```accessHash```) to contact him. See the [User](#user) section for more details.  
 There are also other message types beside the TextMessage; See the [Message](#message) section for more details.
+
+### Default reaction
+There are certainly some situations that the received message to your bot, does not match any of the registered ```conversation```s, ```hears```s, etc... . For these situaions, you can set a **default callback** that gets called when such a message arrives. See the example below:
+```js
+"use strict";
+
+const Platform = require("../../../index");
+
+const NasimBot = Platform.NasimBot;
+
+let bot = new NasimBot("Bot Token");
+
+bot.hears(["hello", "Hi"], (message,responder) => {
+    //The user said something like hello!
+});
+
+bot.setDefaultCallback((message,responder) => {
+    //The user said something new! :)
+});
+```
 ## API classes and models
 ### Sensitive
 ### Message
