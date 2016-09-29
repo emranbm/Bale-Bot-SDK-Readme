@@ -192,7 +192,26 @@ There are different messages like:
    * PhotoMessage
    * AudioMessage
    * VideoMessage
+##### Usage
+Feel free to instantiate and send any type of [Message](#message). Here are some examples:
+```js
+let receiver = new User(123 /*user id*/, "321" /*user access hash*/);
 
+// TextMessage
+let textMsg = new TextMessage("Hi, I'm connected :)", receiver);
+
+// FileMessage
+let fileMsg = new FileMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "file name.pdf");
+
+// PhotoMessage
+let photoMsg = new PhotoMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "my photo.jpg", "base64string as thumb", 200 /*width*/, 100/*height*/);
+
+// PhotoMessage
+let videoMsg = new VideoMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "my clip.mp4", "base64string as thumb", 200 /*width*/, 100/*height*/);
+
+// AudioMessage
+let audioMsg = new AudioMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "my track.mp3");
+```
 ### Responder
 ### Conversation
 ### User
