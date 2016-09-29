@@ -192,6 +192,7 @@ There are different messages like:
    * PhotoMessage
    * AudioMessage
    * VideoMessage
+
 ##### Usage
 Feel free to instantiate and send any type of [Message](#message). Here are some examples:
 ```js
