@@ -198,7 +198,7 @@ Note that:
 * Unfortunately it's not possible to **upload** a local file and send it as a message. The only thing your bot can do with ```FileMessage```s (and its subclasses), is to receive a ```FileMessage``` from a user, and send it to someone else. You can also [save received messages](#saving-received-messages) to a database or text file or etc., and send it in the future.
 
 #### Saving received messages
-All [Message](#message)s have a method named ```toJsonObject``` that translates the message object to a light-weight object with the required attributes. Save the object wherever you want.  
+All [Message](#message)s have a method named ```getJsonObject``` that translates the message object to a light-weight object with the required attributes. Save the object wherever you want.  
 On the other hand, each ```Message``` object has a method named ```manipulateFromJsonObject``` that accepts such an object you saved before, and manipulates the message object with that. So you can send it to a user.  
 Why do we talk, when we can sense the code!  
 Assume a bot that shows the last received photo from users.
@@ -206,7 +206,7 @@ Assume a bot that shows the last received photo from users.
 bot.hears(new PhotoMessageSensitive(), (message, responder) => {
    // I have received a PhotoMessage
    // Save it to my collection of images.
-   mySampleDatabase.save(message.name, message);
+   mySampleDatabase.save(message.name, message.getJsonObject());
 });
 
 bot.hears(["last photo"], (message, responder) => {
