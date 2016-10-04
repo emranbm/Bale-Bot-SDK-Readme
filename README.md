@@ -199,22 +199,21 @@ Note that:
 
 #### Saving received messages
 All [Message](#message)s have a method named ```getJsonObject``` that translates the message object to a light-weight object with the required attributes. Save the object wherever you want.  
-On the other hand, each ```Message``` object has a method named ```manipulateFromJsonObject``` that accepts such an object you saved before, and manipulates the message object with that. So you can send it to a user.  
+On the other hand, to load the saved object as a ```FileMessage```, FileMessages (and the subclasses) receive a light-weight object in their constructor. So you can instantiate a ```FileMessage``` and send it to a user.  
 Why do we talk, when we can sense the code!  
 Assume a bot that shows the last received photo from users.
 ```js
 bot.hears(new PhotoMessageSensitive(), (message, responder) => {
-   // I have received a PhotoMessage
-   // Save it to my collection of images.
-   mySampleDatabase.save(message.name, message.getJsonObject());
+    // I have received a PhotoMessage
+    // Save it to my collection of images.
+    mySampleDatabase.save(message.name, message.getJsonObject());
 });
 
 bot.hears(["last photo"], (message, responder) => {
-   let savedObj = mySampleDatabase.selectLast();
-   let photoMsg = new PhotoMessage();
-   photoMsg.manipulateFromJsonObject(savedObj);
-   responder.reply("I've received this pic from someone recently:");
-   responder.reply(photoMsg);
+    let savedObj = mySampleDatabase.selectLast();
+    let photoMsg = new PhotoMessage(savedObj);
+    responder.reply("I've received this pic from someone recently:");
+    responder.reply(photoMsg);
 });
 ```
 #### Usage
