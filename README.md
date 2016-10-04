@@ -26,10 +26,13 @@ Enjoy the provided classes. Here you are:
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
 const FileMessage = Platform.FileMessage;
-const File = Platform.File;
+const PhotoMessage = Platform.PhotoMessage;
+const AudioMessage = Platform.AudioMessage;
+const VideoMessage = Platform.VideoMessage;
 const BotStatus = Platform.BotStatus;
 const User = Platform.User;
 const Conversation = Platform.Conversation;
+const PhotoMessageSensitive = Platform.PhotoMessageSensitive;
 ```
 ### Instantiate your bot
 ```javascript
