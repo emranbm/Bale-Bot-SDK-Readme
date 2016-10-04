@@ -219,7 +219,6 @@ bot.hears(["last photo"], (message, responder) => {
     responder.reply(photoMsg);
 });
 ```
-#### Usage
 ### Responder
 ### Conversation
 ### User
