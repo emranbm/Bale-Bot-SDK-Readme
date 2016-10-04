@@ -186,12 +186,18 @@ bot.hears(new PhotoMessageSensitive(), (message,responder) => {
 });
 ```
 ### Message
-There are different messages like:
+There are variaty of message types that you can send/receive, like:
 * TextMessage
 * FileMessage
    * PhotoMessage
    * AudioMessage
    * VideoMessage
+
+Note that:
+* ```FileMessage``` class is not abstract. So feel free to instantiate and send ```FileMessage```s.
+* Unfortunately it's not possible to **upload** a local file and send it as a message. The only thing your bot can do with ```FileMessage```s (and its subclasses), is to receive a ```FileMessage``` from a user, and send it to someone else. You can also [save received messages](#saving-received-messages) to a database or text file or etc., and send it in the future.
+
+#### Saving received messages
 
 #### Usage
 Feel free to instantiate and send any type of [Message](#message). Here are some examples:
