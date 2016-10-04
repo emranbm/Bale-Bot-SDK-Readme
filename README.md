@@ -201,7 +201,7 @@ Note that:
 All [Message](#message)s have a method named ```toJsonObject``` that translates the message object to a light-weight object with the required attributes. Save the object wherever you want.  
 On the other hand, each ```Message``` object has a method named ```manipulateFromJsonObject``` that accepts such an object you saved before, and manipulates the message object with that. So you can send it to a user.  
 Why do we talk, when we can sense the code!  
-Assume a bot that shows the last received photo from all users.
+Assume a bot that shows the last received photo from users.
 ```js
 bot.hears(new PhotoMessageSensitive(), (message, responder) => {
    // I have received a PhotoMessage
