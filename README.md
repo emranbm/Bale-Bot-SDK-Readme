@@ -198,27 +198,26 @@ Note that:
 * Unfortunately it's not possible to **upload** a local file and send it as a message. The only thing your bot can do with ```FileMessage```s (and its subclasses), is to receive a ```FileMessage``` from a user, and send it to someone else. You can also [save received messages](#saving-received-messages) to a database or text file or etc., and send it in the future.
 
 #### Saving received messages
-
-#### Usage
-Feel free to instantiate and send any type of [Message](#message). Here are some examples:
+All [Message](#message)s have a method named ```toJsonObject``` that translates the message object to a light-weight object with the required attributes. Save the object wherever you want.
+On the other hand, each ```Message``` object has a method named ```manipulateFromJsonObject``` that accepts such an object you saved before, and manipulates the message object with that. So you can send it to a user.
+Why do we talk, when we can sense the code!
+Assume a bot that shows the last received photo from all users.
 ```js
-let receiver = new User(123 /*user id*/, "321" /*user access hash*/);
+bot.hears(new PhotoMessageSensitive(), (message, responder) => {
+   // I have received a PhotoMessage
+   // Save it to my collection of images.
+   mySampleDatabase.save(message.name, message);
+});
 
-// TextMessage
-let textMsg = new TextMessage("Hi, I'm connected :)", receiver);
-
-// FileMessage
-let fileMsg = new FileMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "file name.pdf");
-
-// PhotoMessage
-let photoMsg = new PhotoMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "my photo.jpg", "base64string as thumb", 200 /*width*/, 100/*height*/);
-
-// PhotoMessage
-let videoMsg = new VideoMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "my clip.mp4", "base64string as thumb", 200 /*width*/, 100/*height*/);
-
-// AudioMessage
-let audioMsg = new AudioMessage(123/*fileid*/, "123"/*accessHash*/, receiver, "my track.mp3");
+bot.hears(["last photo"], (message, responder) => {
+   let savedObj = mySampleDatabase.selectLast();
+   let photoMsg = new PhotoMessage();
+   photoMsg.manipulateFromJsonObject(savedObj);
+   responder.reply("I've received this pic from someone recently:");
+   responder.reply(photoMsg);
+});
 ```
+#### Usage
 ### Responder
 ### Conversation
 ### User
