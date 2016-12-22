@@ -225,5 +225,17 @@ bot.hears(new PhotoMessageSensitive(), (message,responder) => {
 });
 ```
 ### Responder
+```responder``` (in receiving message callbacks) is an object to make responding to a message simpler. There are always cases you want to send back a text message to the current peer (user) when you receive a message from him. With ```responder.reply('some text')``` you can send back a text message to the corresponding user.  
+Note that you are not forced to use ```responder``` as you can send message in the standard way:
+```js
+bot.hears(["hello", "Hi"], (message,responder) => {
+    // Short version
+    responder.reply("Hello! What's goin on?");
+    
+    // Standard version
+    let msg = new TextMessage("Hello! What's goin on?", responder.peer);
+    bot.send(msg);
+});
+```
 ### Conversation
 ### User
