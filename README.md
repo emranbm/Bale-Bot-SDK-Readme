@@ -31,8 +31,10 @@ const AudioMessage = Platform.AudioMessage;
 const VideoMessage = Platform.VideoMessage;
 const BotStatus = Platform.BotStatus;
 const User = Platform.User;
+const Group = Platform.Group;
 const Conversation = Platform.Conversation;
 const PhotoMessageSensitive = Platform.PhotoMessageSensitive;
+const Logger = Platform.Logger;
 ```
 ### Instantiate your bot
 ```javascript
@@ -46,7 +48,6 @@ const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
 const FileMessage = Platform.FileMessage;
 const File = Platform.File;
-const BotStatus = Platform.BotStatus;
 const User = Platform.User;
 const Conversation = Platform.Conversation;
 
@@ -150,7 +151,7 @@ There are certainly some situations that the received message to your bot, does 
 ```js
 "use strict";
 
-const Platform = require("../../../index");
+const Platform = require("nasim-bot");
 
 const NasimBot = Platform.NasimBot;
 
