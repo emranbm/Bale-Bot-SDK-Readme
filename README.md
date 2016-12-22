@@ -155,7 +155,24 @@ bot.setDefaultCallback((message,responder) => {
 ## API classes and models
 ### Overview
 Here there is a list of SDK classes. You can use them in the shape of ```require('nasim-bot').<ClassName>```.  
-* **Messa# Nasim Bot SDK
+* **Messages**   
+   * TextMessage
+   * FileMessage
+   * PhotoMessage
+   * AudioMessage
+   * VideoMessage
+   * TemplateMessage
+* **Sensitives**
+   * PhotoMessageSensitive
+   * FileMessageSensitive
+   * TextMessageSensitive
+* **Peer models**
+   * User
+   * Group
+* **Other**
+   * Conversation
+   * Logger  
+# Nasim Bot SDK
 Are you a JS Developer? By this SDK, you can develop [Nasim](https://nasim.elenoon.ir/) bots easily.
 ## Requirements
 You need to have installed [node](https://nodejs.org) and [npm](https://www.npmjs.com) on your system.
