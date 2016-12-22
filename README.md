@@ -154,7 +154,7 @@ bot.setDefaultCallback((message,responder) => {
 ```
 ## API classes and models
 ### Overview
-Here there is a list of SDK classes. You can use them in the shape of ```require('nasim-bot').<ClassName>```.  
+Here is a list of SDK classes. You can use them in the shape of ```require('nasim-bot').<ClassName>```.  
 * **Messages**   
    * TextMessage
    * FileMessage
