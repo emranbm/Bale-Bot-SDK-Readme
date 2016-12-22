@@ -20,8 +20,20 @@ Create an index.js file and inside it:
 ```javascript
 const Platform = require("nasim-bot");
 ```
-**Good news:** Nasim bot SDK is Object-Oriented!
-There are some useful classes provided in the SDK. See [API classes' Overview](#overview)
+### Nasim bot platform is Object-Oriented!
+Enjoy the provided classes. Here you are:
+```javascript
+const NasimBot = Platform.NasimBot;
+const TextMessage = Platform.TextMessage;
+const FileMessage = Platform.FileMessage;
+const PhotoMessage = Platform.PhotoMessage;
+const AudioMessage = Platform.AudioMessage;
+const VideoMessage = Platform.VideoMessage;
+const BotStatus = Platform.BotStatus;
+const User = Platform.User;
+const Conversation = Platform.Conversation;
+const PhotoMessageSensitive = Platform.PhotoMessageSensitive;
+```
 ### Instantiate your bot
 ```javascript
 let bot = new NasimBot("Your Token");
@@ -154,27 +166,8 @@ bot.setDefaultCallback((message,responder) => {
 ```
 ## API classes and models
 ### Overview
-Here is a list of SDK classes. You can use them in the shape of ```require('nasim-bot').<ClassName>```.  
-
-* **Messages**   
-   * TextMessage
-   * FileMessage
-   * PhotoMessage
-   * AudioMessage
-   * VideoMessage
-   * TemplateMessage
-* **Sensitives**
-   * PhotoMessageSensitive
-   * FileMessageSensitive
-   * TextMessageSensitive
-* **Peer models**
-   * User
-   * Group
-* **Other**
-   * Conversation
-   * Logger  
-
-# Nasim Bot SDK
+Here there is a list of SDK classes. You can use them in the shape of ```require('nasim-bot').<ClassName>```.  
+* **Messa# Nasim Bot SDK
 Are you a JS Developer? By this SDK, you can develop [Nasim](https://nasim.elenoon.ir/) bots easily.
 ## Requirements
 You need to have installed [node](https://nodejs.org) and [npm](https://www.npmjs.com) on your system.
@@ -359,8 +352,7 @@ Here there is a list of SDK classes. You can use them in the shape of ```require
    * Group
 * **Other**
    * Conversation
-   * Logger  
-   
+   * Logger
 ### Sensitive
 In [Hears sample](#hears-sample), we learned how to respond to a specific message. (For example saying your bot name in response of the user asking "what's your name")  
 So, how can we ```hear``` for a message that is not distinguishable by text. For example we want to ```hear``` for a photo, and in response of that, say "thank you for sharing pics with me!"?
@@ -418,7 +410,7 @@ bot.hears(["last photo"], (message, responder) => {
 ### Responder
 ### Conversation
 ### User
-ges**   
+* **Messages**   
    * TextMessage
    * FileMessage
    * PhotoMessage
@@ -434,7 +426,7 @@ ges**
    * Group
 * **Other**
    * Conversation
-   * Logger
+   * Logger  
 ### Sensitive
 In [Hears sample](#hears-sample), we learned how to respond to a specific message. (For example saying your bot name in response of the user asking "what's your name")  
 So, how can we ```hear``` for a message that is not distinguishable by text. For example we want to ```hear``` for a photo, and in response of that, say "thank you for sharing pics with me!"?
