@@ -360,6 +360,7 @@ Here there is a list of SDK classes. You can use them in the shape of ```require
 * **Other**
    * Conversation
    * Logger  
+   
 ### Sensitive
 In [Hears sample](#hears-sample), we learned how to respond to a specific message. (For example saying your bot name in response of the user asking "what's your name")  
 So, how can we ```hear``` for a message that is not distinguishable by text. For example we want to ```hear``` for a photo, and in response of that, say "thank you for sharing pics with me!"?
