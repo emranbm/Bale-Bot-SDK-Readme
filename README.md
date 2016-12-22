@@ -172,29 +172,6 @@ Here there is a list of SDK classes. You can use them in the shape of ```require
    * Conversation
    * Logger  
    
-### Sensitive
-In [Hears sample](#hears-sample), we learned how to respond to a specific message. (For example saying your bot name in response of the user asking "what's your name")  
-So, how can we ```hear``` for a message that is not distinguishable by text. For example we want to ```hear``` for a photo, and in response of that, say "thank you for sharing pics with me!"?
-```Sensitive```s are objects that are sensitive to an individual sort of message. The ```Sensitive``` intself is an __interface__ with one method called ```match``` that accepts [Message](#message) as the argument and returns a boolean.  
-In the above example, we can use a sensitive like this:
-```js
-class PhotoMessageSensitive implements Sensitive {
-
-    match(message: Message): boolean {
-        if (message instanceof PhotoMessage)
-            return true;
-        else
-            return false;
-    }
-
-}
-```
-And now we can hear for photo messages like this:
-```js
-bot.hears(new PhotoMessageSensitive(), (message,responder) => {
-   responder.reply("thank you for sharing pics with me!");
-});
-```
 ### Message
 There are variaty of message types that you can send/receive, like:
 * TextMessage
@@ -224,6 +201,29 @@ bot.hears(["last photo"], (message, responder) => {
     let photoMsg = new PhotoMessage(savedObj);
     responder.reply("I've received this pic from someone recently:");
     responder.reply(photoMsg);
+});
+```
+### Sensitive
+In [Hears sample](#hears-sample), we learned how to respond to a specific message. (For example saying your bot name in response of the user asking "what's your name")  
+So, how can we ```hear``` for a message that is not distinguishable by text. For example we want to ```hear``` for a photo, and in response of that, say "thank you for sharing pics with me!"?
+```Sensitive```s are objects that are sensitive to an individual sort of message. The ```Sensitive``` intself is an __interface__ with one method called ```match``` that accepts [Message](#message) as the argument and returns a boolean.  
+In the above example, we can use a sensitive like this:
+```js
+class PhotoMessageSensitive implements Sensitive {
+
+    match(message: Message): boolean {
+        if (message instanceof PhotoMessage)
+            return true;
+        else
+            return false;
+    }
+
+}
+```
+And now we can hear for photo messages like this:
+```js
+bot.hears(new PhotoMessageSensitive(), (message,responder) => {
+   responder.reply("thank you for sharing pics with me!");
 });
 ```
 ### Responder
