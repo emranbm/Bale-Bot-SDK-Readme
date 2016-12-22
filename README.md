@@ -20,20 +20,8 @@ Create an index.js file and inside it:
 ```javascript
 const Platform = require("nasim-bot");
 ```
-### Nasim bot platform is Object-Oriented!
-Enjoy the provided classes. Here you are:
-```javascript
-const NasimBot = Platform.NasimBot;
-const TextMessage = Platform.TextMessage;
-const FileMessage = Platform.FileMessage;
-const PhotoMessage = Platform.PhotoMessage;
-const AudioMessage = Platform.AudioMessage;
-const VideoMessage = Platform.VideoMessage;
-const BotStatus = Platform.BotStatus;
-const User = Platform.User;
-const Conversation = Platform.Conversation;
-const PhotoMessageSensitive = Platform.PhotoMessageSensitive;
-```
+**Good news:** Nasim bot SDK is Object-Oriented!
+There are some useful classes provided in the SDK. See [API classes' Overview](#overview)
 ### Instantiate your bot
 ```javascript
 let bot = new NasimBot("Your Token");
