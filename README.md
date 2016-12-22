@@ -32,8 +32,6 @@ const Platform = require("nasim-bot");
 const NasimBot = Platform.NasimBot;
 const TextMessage = Platform.TextMessage;
 const FileMessage = Platform.FileMessage;
-const File = Platform.File;
-const BotStatus = Platform.BotStatus;
 const User = Platform.User;
 const Conversation = Platform.Conversation;
 
