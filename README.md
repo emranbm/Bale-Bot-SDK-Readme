@@ -1,10 +1,10 @@
-# Nasim Bot SDK
-Are you a JS Developer? By this SDK, you can develop [Nasim](https://nasim.elenoon.ir/) bots easily.
+# Bamdad Bot SDK
+Are you a JS Developer? By this SDK, you can develop [Bamdad](https://nasim.elenoon.ir/) bots easily.
 ## Requirements
 You need to have installed [node](https://nodejs.org) and [npm](https://www.npmjs.com) on your system.
 ## Create a bot like a boss!
 ### Talk to BotFather
-Get a bot token from Nasim BotFather. You can find Nasim BotFather by this id: <b>@bot-father</b>
+Get a bot token from Bamdad BotFather. You can find Bamdad BotFather by this id: <b>@bot-father</b>
 ### Prepare your environment
 ```bash
 $ mkdir mybot
@@ -20,7 +20,7 @@ Create an index.js file and inside it:
 ```javascript
 const Platform = require("nasim-bot");
 ```
-**Good news:** Nasim bot SDK is Object-Oriented! There some useful classes provided in the sdk. Take a look at [API classes' overview](#overview)
+**Good news:** Bamdad bot SDK is Object-Oriented! There some useful classes provided in the sdk. Take a look at [API classes' overview](#overview)
 ### Instantiate your bot
 ```javascript
 let bot = new NasimBot("Your Token");
