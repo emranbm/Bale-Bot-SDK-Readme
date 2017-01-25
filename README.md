@@ -1,10 +1,10 @@
-# Bamdad Bot SDK
-Are you a JS Developer? By this SDK, you can develop [Bamdad](https://nasim.elenoon.ir/) bots easily.
+# Nasim Bot SDK
+Are you a JS Developer? By this SDK, you can develop [Nasim](https://nasim.elenoon.ir/) bots easily.  
 ## Requirements
-You need to have installed [node](https://nodejs.org) and [npm](https://www.npmjs.com) on your system.
+You need to have installed [node](https://nodejs.org) and [npm](https://www.npmjs.com) on your system.  
 ## Create a bot like a boss!
 ### Talk to BotFather
-Get a bot token from Bamdad BotFather. You can find Bamdad BotFather by this id: <b>@bot-father</b>
+Get a bot token from Nasim BotFather. You can find Nasim BotFather by this id: <b>@bot-father</b>  
 ### Prepare your environment
 ```bash
 $ mkdir mybot
@@ -20,7 +20,7 @@ Create an index.js file and inside it:
 ```javascript
 const Platform = require("nasim-bot");
 ```
-**Good news:** Bamdad bot SDK is Object-Oriented! There some useful classes provided in the sdk. Take a look at [API classes' overview](#overview)
+**Good news:** Nasim bot SDK is Object-Oriented! There some useful classes provided in the sdk. Take a look at [API classes' overview](#overview)  
 ### Instantiate your bot
 ```javascript
 let bot = new NasimBot("Your Token");
@@ -39,7 +39,7 @@ let bot = new NasimBot("Your Token");
 ```
 ### Next
 Now your code environment is ready. You can ```hear``` for an individual message. Make ```conversation```s and talk to your users, and so on and so forth...  
-Discover more and more from [samples](#samples).
+Discover more and more from [samples](#samples).  
 ## Samples
 ### Hears sample
 You can hear for a message with a particular content and respond to it.  
@@ -166,10 +166,13 @@ Here there is a list of SDK classes. You can use them in the shape of ```require
 * **Peer models**
    * User
    * Group
+* **Requests (Coming soon...)**
+   * FileUploadRequest
+   * FileDownloadRequest
 * **Other**
    * Conversation
    * Logger  
-   
+
 ### Message
 There are variaty of message types that you can send/receive, like:
 * TextMessage
@@ -179,8 +182,7 @@ There are variaty of message types that you can send/receive, like:
    * VideoMessage
 
 Note that:
-* ```FileMessage``` class is not abstract. So feel free to instantiate and send ```FileMessage```s.
-* Unfortunately it's not possible to **upload** a local file and send it as a message. The only thing your bot can do with ```FileMessage```s (and its subclasses), is to receive a ```FileMessage``` from a user, and send it to someone else. You can also [save received messages](#saving-received-messages) to a database or text file or etc., and send it in the future.
+* ```FileMessage``` class is not abstract. So feel free to instantiate and send ```FileMessage```s.  
 
 #### Saving received messages
 All [Message](#message)s have a method named ```getJsonObject``` that translates the message object to a light-weight object with the required attributes. Save the object wherever you want.  
@@ -201,6 +203,36 @@ bot.hears(["last photo"], (message, responder) => {
     responder.reply(photoMsg);
 });
 ```
+
+### Requests (Coming soon...)
+#### File Upload
+
+```js
+const FileUploadRequest = Platform.FileUploadRequest;
+
+bot.sendRequest(new FileUploadRequest('/path/to/local file')).then(response => {
+    // you can save the location of uploadedfile
+    let fileId = response.fileId
+    let fileAccessHash = response.accessHash
+    let fileٰVersion = response.version
+
+    bot.send(new FileMessage(fileId, fileAccessHash, fileName, fileSize, mimeType, captionText), new User(userId, userAccessHash))
+})
+
+```
+
+#### File Download
+
+```js
+const FileDownloadRequest = Platform.FileDownloadRequest;
+
+bot.sendRequest(new FileDownloadRequest(fileId, fileAccessHash)).then(response => {
+
+    mySampleDatabase.save('file name', response.fileBytes);
+})
+
+```
+
 ### Sensitive
 In [Hears sample](#hears-sample), we learned how to respond to a specific message. (For example saying your bot name in response of the user asking "what's your name")  
 So, how can we ```hear``` for a message that is not distinguishable by text. For example we want to ```hear``` for a photo, and in response of that, say "thank you for sharing pics with me!"?
@@ -231,11 +263,9 @@ Note that you are not forced to use ```responder``` as you can send message in t
 bot.hears(["hello", "Hi"], (message,responder) => {
     // Short version
     responder.reply("Hello! What's goin on?");
-    
+
     // Standard version
     let msg = new TextMessage("Hello! What's goin on?", responder.peer);
     bot.send(msg);
 });
 ```
-### Conversation
-### User
