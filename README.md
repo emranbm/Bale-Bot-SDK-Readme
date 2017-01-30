@@ -134,7 +134,7 @@ let msg = new TextMessage("Hi, I'm connected :)");
 let receiver = new User(123 /*user id*/, "321" /*user access hash*/);
 bot.send(msg, receiver);
 ```
-In this case, you need to have the user (or his ```id``` and ```accessHash```) to contact him. See the [Peer](#peer-models) section for more details.  
+In this case, you need to have the user (or his ```id``` and ```accessHash```) to contact him. See the [Peer models](#peer-models) section for more details.  
 There are also other message types beside the TextMessage; See the [Message](#message) section for more details.
 
 ###Default reaction
@@ -286,4 +286,6 @@ There are two types of peer:
   * User
   * Group (Channels are also assumed as Groups)  
 
-Each peer is identified by its ```id``` and ```acessHash```.
+Each peer is identified by an ```id``` and an ```acessHash```. If you want to send a message to a specific user (or group\channel), you may have its id and accessHash. See the [Send sample](#send-sample) section for more details.  
+####Where to get the peer from?
+When you ```hear``` for something or in ```conversation```s, an object is passed to the corresponding callback, named ```responder```. This object beside its [reply](#responder) function, has another field named ```peer```. By ```responder.peer``` you can access ```peer.id``` and ```peer.accessHash```.
