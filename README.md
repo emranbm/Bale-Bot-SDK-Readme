@@ -134,7 +134,7 @@ let msg = new TextMessage("Hi, I'm connected :)");
 let receiver = new User(123 /*user id*/, "321" /*user access hash*/);
 bot.send(msg, receiver);
 ```
-In this case, you need to have the user (or his ```id``` and ```accessHash```) to contact him. See the [User](#user) section for more details.  
+In this case, you need to have the user (or his ```id``` and ```accessHash```) to contact him. See the [Peer](#peermodels) section for more details.  
 There are also other message types beside the TextMessage; See the [Message](#message) section for more details.
 
 ###Default reaction
