@@ -274,8 +274,9 @@ bot.hears(["hello", "Hi"], (message,responder) => {
     responder.reply("Hello! What's goin on?");
 
     // Standard version
-    let msg = new TextMessage("Hello! What's goin on?", responder.peer);
-    bot.send(msg);
+    let msg = new TextMessage("Hello! What's goin on?");
+    let receiver = responder.peer;
+    bot.send(msg, receiver);
 });
 ```
 ###Peer models
