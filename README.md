@@ -43,6 +43,30 @@ const Conversation = SDK.Conversation;
 
 let bot = new BaleBot("Your Token");
 ```
+###Bot config
+When instantiating a BaleBot, it's also possible to pass some options to it (as the constructor second argument).  
+Here is the structure of the options passed to the BaleBot:  
+Note that the values are filled with the default; means if the item is not present in the given option, that default value will be used instead.  
+```js
+let options = {
+  log: {
+    enabled: true,
+    level: "INFO" // other options: "TRACE", "DEBUG", "WARN", "ERROR", "FATAL"
+  },
+  requestQueue: {
+    fetchInterval: 0, // in ms. the time between sending two consecutive requests.
+    retryInterval: 0, // in ms. the time to wait before resending a failed request.
+    timeout: 30000, // in ms. the time period to try for sending each request. if the request failed again after this time it will be rejected with the "TIME_OUT" message.
+  },
+  socket: {
+    reconnectInterval: 30000 // in ms. when the socket disconnects, waits as much as this time and the tries to reconnect.
+  }
+}
+
+// sample use
+let bot = new BaleBot('token', options);
+```
+
 ###Next
 Now your code environment is ready. You can ```hear``` for an individual message. Make ```conversation```s and talk to your users, and so on and so forth...  
 Discover more and more from [samples](#samples).  
